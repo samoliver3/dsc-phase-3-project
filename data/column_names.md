@@ -1,7 +1,7 @@
 Column Names and Descriptions for Telecom Dataset
 
 1. State - Which state in the US the customer is located.
-2. Account length - Days customer has been using the service
+2. Account length - Number of months customer has been using the service
 3. Area code - Customer's area code
 4. Phone number - Customer's phone number without area code
 5. International plan - (Y/N) does customer have an international plan?
