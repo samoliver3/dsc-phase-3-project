@@ -4,6 +4,17 @@
 
 The goal of this project is to reduce customer churn rate for SyriaTel, a telecommunications company in Syria with several million customers. This dataset is based in the US, so it is important for model results to extrapolate to an application in Syria. To reduce customer churn rate, it is important to identify customers that are likely to churn, why these customers churn, and deploy a customer retention strategy on these customers.
 
+## Navigation Instructions
+
+There are four main folders: data, notebooks, pdf files, and images. Data is where the descriptions of the variables used in the project's analysis and modeling can be found, and it is also where the dataset can be found. Notebooks is where the Exploratory Data Analysis (EDA) and modeling notebooks live, and these notebooks are the most important pieces of the project. PDF files is where any PDF, especially the project presentation (slideshow) can be viewed. Images is where all the images on this page can be viewed along with some others that pertain to the project.
+
+## Links to Important Resources
+
+1. Project Presentation
+2. [EDA Notebook](https://github.com/samoliver3/dsc-phase-3-project/blob/main/notebooks/eda.ipynb)
+3. [Modeling Notebook](https://github.com/samoliver3/dsc-phase-3-project/blob/main/notebooks/modeling.ipynb)
+4. [The Dataset](https://www.kaggle.com/datasets/becksddf/churn-in-telecoms-dataset)
+
 ### The Data
 The data comes from a Kaggle dataset located here: https://www.kaggle.com/datasets/becksddf/churn-in-telecoms-dataset
 The original dataset is from a CrowdAnalytix competition. There are 3,333 total data points in the set, twenty-one different variables, and 85.5% of the dataset is represented by customers that did not churn while the remaining 14.5% is represented by customers that churned. This dataset is anonymized, but the data is orginally from the United States. The variables in the dataset include items such as which US state the customer is located, how many calls the customer has made, whether or not the customer has an international plan, and many others. 
@@ -49,4 +60,38 @@ The basic premise of utilizing the F-2 Score to evaluate model performance in th
 
 ### Baseline Model - Logistic Regression
 
-.
+The baseline model was a simple logistic regression model that did not perform well. This model utilized most variables besides redundancies (high correlations). It did not perform well in terms of F-2 or accuracy. Its accuracy was lower than guessing 'churn' for every customer (85.5% chance). The baseline predicted a lot of false positives, which can seen below.
+
+![Baseline Confusion Matrix](./images/baselineModelMatrix.png)
+
+### Final Model - Random Forest
+
+The final model implemented all the same variables as the baseline besides the state column. This model performed well and its accuracy score was high for both the training and testing sets (around 95%) without presenting signs of overfitting such as close accuracy score between the testing and training set. This model had this highest F-2 score as well. Its performance can be captured with the confusion matrix below:
+
+![Final Confusion Matrix](./images/finalModelMatrix.png)
+
+This model especially has a low number of false negatives, which allowed it to score highly in regards to its F-2 score. The model also had an interesting set of most important features:
+
+![Final Importances](./images/mostImportants.png)
+
+The most important feature, by far, is total charge. This feature importance signifies that it will be important to focus on discounting costs of customers that are predicted to churn. It would be worthwhile to investigate better overall methods to decrease costs for customers. The second most important feature is total international charge, and the third most important feature is total calls. It seems like there may be a common theme with either charging too much or not providing comprehensive enough packages for calling. There are various business strategies that could reduce churn in these cases such as rewarding customers for utilizing the service more or offering more comprehensive plans for customers such as unlimited calling.
+
+Using the estimates for cost of False Positives, False Negatives, and True Positives, it was calculated that this model's prediction will save SyriaTel around 335,888,000 dollars. The cost of not implementing any retention rate solution is about $429.2M, and the cost of the retention strategy proposed in this project costs about 93,312,000 dollars. This cost was calculated by using the frequency of False Positives, False Negatives, and True Positives, using the assumptions of cost for these categories, and utilizing the assumption of 8 million customers at SyriaTel. It should certainly be stated that this calculation does rely on a series of assumptions, and this calculated savings relies on the validation or at least partial-validation of these assumptions. To summarize the final model's conclusions:
+
+![Final Costs](./images/finalCosts.png)
+
+### Conclusions and Further Recommendations
+
+The predictive modeling utilized in this project exemplifies how SyriaTel can minimize losses due to customer churn. The EDA showed important findings such as the need for a comprehensive international plan that offers some sort of value if it is the case that an international plan will be offered. The international plan in this dataset did not seem to offer any value, and as a result, customers with an international plan had a high rate of churn. The EDA also showed the need for customer service calls to be handled, especially when the customer has called multiple times before. At four or more calls to customer service, the customer is likely to terminate the service.
+There are important considerations to make for future work on this project such as finding more data to analyze. 3,333 unique data points is not exactly the largest dataset. It would also be helpful for SyriaTel to identify unique qualities in their customer base and in Syria such that optimization can occur for variables that specifically apply to SyriaTel. It will also be helpful for SyriaTel to continue to use the model and tune the model for future churn periods.
+
+## Repository Structure
+
+```
+├── data
+├── images
+├── notebooks
+├── pdf_files
+├── .gitignore
+└── README.md                           
+```
