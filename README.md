@@ -10,7 +10,7 @@ There are four main folders: data, notebooks, pdf files, and images. Data is whe
 
 ## Links to Important Resources
 
-1. Project Presentation
+1. [Project Presentation](https://github.com/samoliver3/dsc-phase-3-project/tree/main/pdf_files)
 2. [EDA Notebook](https://github.com/samoliver3/dsc-phase-3-project/blob/main/notebooks/eda.ipynb)
 3. [Modeling Notebook](https://github.com/samoliver3/dsc-phase-3-project/blob/main/notebooks/modeling.ipynb)
 4. [The Dataset](https://www.kaggle.com/datasets/becksddf/churn-in-telecoms-dataset)
